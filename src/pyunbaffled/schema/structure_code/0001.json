@@ -1,0 +1,23 @@
+{
+    "fields": [
+      { "length": 2, "has_sign": true, "table_number": "1", "name": "call_type" },
+      { "length": 2, "has_sign": true, "table_number": "2", "name": "sensor_type" },
+      { "length": 4, "has_sign": true, "table_number": "3", "name": "sensor_identification" },
+      { "length": 2, "has_sign": true, "table_number": "4", "name": "recording_office_type" },
+      { "length": 4, "has_sign": true, "table_number": "5", "name": "recording_office_identification" },
+      { "length": 3, "has_sign": true, "table_number": "6", "name": "connect_date" },
+      { "length": 3, "has_sign": true, "table_number": "7", "name": "timing_indicator" },
+      { "length": 4, "has_sign": true, "table_number": "8", "name": "study_indicator" },
+      { "length": 1, "has_sign": true, "table_number": "9", "name": "called_party_off_hook_indicator" },
+      { "length": 1, "has_sign": true, "table_number": "10", "name": "service_observed_traffic_sampled" },
+      { "length": 1, "has_sign": true, "table_number": "11", "name": "operator_action" },
+      { "length": 2, "has_sign": true, "table_number": "12", "name": "service_feature" },
+      { "length": 2, "has_sign": true, "table_number": "13", "name": "originating_npa" },
+      { "length": 4, "has_sign": true, "table_number": "14", "name": "originating_number" },
+      { "length": 1, "has_sign": true, "table_number": "15", "name": "overseas_international_call_indicator" },
+      { "length": 3, "has_sign": true, "table_number": "16", "name": "terminating_npa" },
+      { "length": 4, "has_sign": true, "table_number": "17", "name": "terminating_number" },
+      { "length": 4, "has_sign": true, "table_number": "18", "name": "connect_time" },
+      { "length": 5, "has_sign": true, "table_number": "19", "name": "elapsed_time" }
+    ]
+  }

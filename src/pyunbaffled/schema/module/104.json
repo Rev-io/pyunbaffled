@@ -1,0 +1,5 @@
+{
+    "fields": [
+      { "length": 5, "has_sign": true, "table_number": "244", "name": "trunk_identification" }
+    ]
+  }

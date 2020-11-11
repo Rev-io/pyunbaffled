@@ -1,0 +1,9 @@
+{
+    "fields": [
+      { "length": 2, "has_sign": true, "table_number": "730", "name": "party_identifier" },
+      { "length": 6, "has_sign": true, "table_number": "731", "name": "location_routing_number_lrn" },
+      { "length": 5, "has_sign": true, "table_number": "732", "name": "service_provider_identity" },
+      { "length": 8, "has_sign": true, "table_number": "733", "name": "location" },
+      { "length": 4, "has_sign": true, "table_number": "734", "name": "supporting_information" }
+    ]
+  }

@@ -1,0 +1,8 @@
+{
+    "fields": [
+      { "length": 1, "has_sign": true, "table_number": "76", "name": "number_identity" },
+      { "length": 3, "has_sign": true, "table_number": "165", "name": "country_code_or_data_network_identification_code" },
+      { "length": 2, "has_sign": true, "table_number": "55", "name": "significant_digits_in_next_fields" },
+      { "length": 8, "has_sign": true, "table_number": "126", "name": "number" }
+    ]
+  }

@@ -1,0 +1,6 @@
+{
+    "fields": [
+      { "length": 2, "has_sign": true, "table_number": "55", "name": "significant_digits_in_next_fields" },
+      { "length": 8, "has_sign": true, "table_number": "126", "name": "account_code_cdar" }
+    ]
+  }

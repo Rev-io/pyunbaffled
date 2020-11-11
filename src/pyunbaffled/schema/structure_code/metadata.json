@@ -1,0 +1,7 @@
+{
+    "fields": [
+      { "length": 4, "has_sign": false, "table_number": "000", "name": "record_descriptor_word" },
+      { "length": 1, "has_sign": false, "table_number": "00", "name": "hexadecimal_identifier" },
+      { "length": 3, "has_sign": true, "table_number": "0", "name": "structure_code" }
+    ]
+  }

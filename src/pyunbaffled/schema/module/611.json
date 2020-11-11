@@ -1,0 +1,6 @@
+{
+    "fields": [
+      { "length": 4, "has_sign": true, "table_number": "237", "name": "generic_context_identifier" },
+      { "length": 8, "has_sign": true, "table_number": "126", "name": "digits_string" }
+    ]
+  }

@@ -1,0 +1,5 @@
+{
+    "fields": [
+      { "length": 2, "has_sign": true, "table_number": "421", "name": "originating_line_information_parameter" }
+    ]
+  }

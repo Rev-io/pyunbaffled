@@ -1,0 +1,5 @@
+{
+    "fields":  [
+      { "length": 2, "has_sign": true, "table_number": "88", "name": "module_code_identification" }
+    ]
+  }
