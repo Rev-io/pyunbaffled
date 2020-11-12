@@ -43,6 +43,7 @@ class FileParser:
             'structure_code']
         self.moduleCodeLength = self.moduleCodeMetadataSchema[
             "module_code_identification"]["length"]
+        self.line_number = 0
 
     def __enter__(self):
         self.fd = open(self.file_name, self.mode)
@@ -55,66 +56,62 @@ class FileParser:
         return self
 
     def __next__(self):
-        while True:
-            current_length = 0
-            current_length += self.recordDescriptorWordSchema['length']
-            rdw = self.fd.read(self.recordDescriptorWordSchema['length'])
-            if rdw == b'':
-                raise StopIteration()
+        self.line_number += 1
+        rdw = self.fd.read(self.recordDescriptorWordSchema['length'])
+        if rdw == b'':
+            raise StopIteration()
 
-            current_length += self.hexadecimalIdentifierSchema['length']
-            current_length += self.structureCodeSchema['length']
-            structureCode = StructureCode(
-                createField(rdw, self.recordDescriptorWordSchema),
-                createField(
-                    self.fd.read(self.hexadecimalIdentifierSchema['length']),
-                    self.hexadecimalIdentifierSchema),
-                createField(self.fd.read(self.structureCodeSchema['length']),
-                            self.structureCodeSchema),
-            )
+        structure_code = StructureCode(
+            self.line_number,
+            createField(rdw, self.recordDescriptorWordSchema),
+            createField(
+                self.fd.read(self.hexadecimalIdentifierSchema['length']),
+                self.hexadecimalIdentifierSchema),
+            createField(self.fd.read(self.structureCodeSchema['length']),
+                        self.structureCodeSchema),
+        )
 
-            structureCodeSchema = self.structureCodeRepository.get_schema(
-                structureCode.structureCode)
+        structure_code_schema = self.structureCodeRepository.get_schema(
+            structure_code.structure_code)
 
-            if structureCodeSchema == None:
-                structureCode.markInvalid()
-                structureCode.addField(
-                    "invalid",
-                    createInvalidField(
-                        self.fd.read(structureCode.content_length),
-                        structureCode.content_length))
-            else:
-                for (name, fieldSchema) in structureCodeSchema.items():
-                    current_length += fieldSchema['length']
-                    structureCode.addField(
-                        name,
-                        createField(self.fd.read(fieldSchema['length']),
-                                    fieldSchema))
-                while current_length < structureCode.length:
-                    current_length += self.moduleCodeLength
-                    moduleCode = createField(
-                        self.fd.read(self.moduleCodeLength), self.
-                        moduleCodeMetadataSchema["module_code_identification"])
-                    moduleSchema = self.moduleRepository.get_schema(
-                        moduleCode['value'])
-                    module = Module(moduleCode)
-                    if moduleSchema == None:
-                        module.markInvalid()
+        if structure_code_schema == None:
+            structure_code.markInvalid()
+            structure_code.addField(
+                "invalid",
+                createInvalidField(
+                    self.fd.read(structure_code.remaining_characters),
+                    structure_code.remaining_characters))
+        else:
+            for (name, fieldSchema) in structure_code_schema.items():
+                structure_code.addField(
+                    name,
+                    createField(self.fd.read(fieldSchema['length']),
+                                fieldSchema))
+
+            while structure_code.remaining_characters > 0:
+                module_code = createField(
+                    self.fd.read(self.moduleCodeLength), self.
+                    moduleCodeMetadataSchema["module_code_identification"])
+
+                module_schema = self.moduleRepository.get_schema(
+                    module_code['value'])
+                module = Module(module_code)
+
+                if module_schema == None:
+                    module.markInvalid()
+                    remaining_characters = structure_code.remaining_characters - module.length
+                    module.addField(
+                        "invalid",
+                        createInvalidField(self.fd.read(remaining_characters),
+                                           remaining_characters))
+                    structure_code.addModule(module)
+                else:
+                    for (name, fieldSchema) in module_schema.items():
                         module.addField(
-                            "invalid",
-                            createInvalidField(
-                                self.fd.read(structureCode.content_length -
-                                             current_length),
-                                structureCode.content_length - current_length))
-                        structureCode.addModule(moduleCode['value'], module)
-                    else:
-                        for (name, fieldSchema) in moduleSchema.items():
-                            current_length += fieldSchema['length']
-                            module.addField(
-                                name,
-                                createField(
-                                    self.fd.read(fieldSchema['length']),
-                                    fieldSchema))
-                            structureCode.addModule(module)
+                            name,
+                            createField(self.fd.read(fieldSchema['length']),
+                                        fieldSchema))
 
-            return structureCode
+                    structure_code.addModule(module)
+
+        return structure_code

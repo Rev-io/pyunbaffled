@@ -9,11 +9,14 @@ class KeyValueEncoder(json.JSONEncoder):
                 name: field['value']
                 for (name, field) in record.fields.items()
             }
-            structureCode['modules'] = [{
-                name: field['value']
-            } for module in record.modules
-                                        for (name,
-                                             field) in module.fields.items()]
+            structureCode['modules'] = []
+
+            for module in record.modules:
+                processed_module = {}
+                for (name, field) in module.fields.items():
+                    processed_module[name] = field['value']
+                structureCode['modules'].append(processed_module)
+
             return structureCode
         else:
             return super().default(record)
