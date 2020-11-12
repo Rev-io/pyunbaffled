@@ -10,6 +10,7 @@ class Repository:
 
     def get_schema(self, key):
         file_path = os.path.join(self.base_path, self.type, f"{key}.json")
+        print(file_path)
         if key not in self.data:
             if os.path.exists(file_path):
                 with open(file_path) as f:
