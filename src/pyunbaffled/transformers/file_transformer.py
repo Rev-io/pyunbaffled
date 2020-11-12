@@ -1,6 +1,6 @@
 from os import getcwd
 import json
-from schema.repository import Repository
+from schemas.repository import Repository
 from parsers.file_parser import FileParser
 
 
