@@ -62,6 +62,7 @@ class FileParser:
             raise StopIteration()
 
         structure_code = StructureCode(
+            self.file_name,
             self.line_number,
             createField(rdw, self.recordDescriptorWordSchema),
             createField(
