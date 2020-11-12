@@ -1,1 +1,1 @@
-recursive-include examples *.json
+include src/pyunbaffled/schemas/modules/*.json src/pyunbaffled/schemas/structure_codes/*.json
