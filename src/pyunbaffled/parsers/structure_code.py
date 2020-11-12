@@ -1,5 +1,5 @@
 class StructureCode:
-    def __init__(self, line_number, record_descriptor_word,
+    def __init__(self, file_name, line_number, record_descriptor_word,
                  hexadecimal_identifier, structure_code):
         self.fields = {
             'record_descriptor_word': record_descriptor_word,
@@ -13,6 +13,7 @@ class StructureCode:
         self.remaining_characters -= hexadecimal_identifier['length']
         self.structure_code = structure_code['value'][1:]
         self.hexadecimal_identifier = hexadecimal_identifier['value']
+        self.file_name = file_name
         self.line_number = line_number
         self.modules = []
         self.invalid = False

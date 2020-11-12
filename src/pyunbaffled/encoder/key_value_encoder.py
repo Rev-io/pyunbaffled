@@ -9,6 +9,8 @@ class KeyValueEncoder(json.JSONEncoder):
                 name: field['value']
                 for (name, field) in record.fields.items()
             }
+            structureCode['file_name'] = record.file_name
+            structureCode['line_number'] = record.line_number
             structureCode['modules'] = []
 
             for module in record.modules:
