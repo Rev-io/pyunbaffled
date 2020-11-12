@@ -24,10 +24,10 @@ setup(
     license='MIT',
     description=
     'pyunbaffled is python library for parsing telecommunications call data records in the Billing Automatic Message Accounting Format (BAF) Generic Requirements format.',
-    long_description='%s\n%s' %
-    (re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub(
-        '', read('README.rst')),
-     re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))),
+    # long_description='%s\n%s' %
+    # (re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub(
+    #     '', read('README.rst')),
+    #  re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))),
     author='Darren Seet',
     author_email='darrens@rev.io',
     url='https://github.com/seetdev/pyunbaffled',
@@ -78,7 +78,7 @@ setup(
         #   ':python_version=="2.6"': ['argparse'],
     },
     setup_requires=[
-        'pytest-runner',
+        # 'pytest-runner',
     ],
     entry_points={'console_scripts': [
         'pyunbaffled = pyunbaffled.cli:main',
