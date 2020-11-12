@@ -1,4 +1,4 @@
-from parsers.structure_code import StructureCode
+from ..parsers.structure_code import StructureCode
 import json
 
 

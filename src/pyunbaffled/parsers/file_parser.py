@@ -1,7 +1,5 @@
-import sys
-import traceback
-from parsers.structure_code import StructureCode
-from parsers.module import Module
+from ..parsers.structure_code import StructureCode
+from ..parsers.module import Module
 
 
 def createField(rawValue, schema):
