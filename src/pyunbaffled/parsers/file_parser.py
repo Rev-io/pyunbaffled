@@ -56,7 +56,6 @@ class FileParser:
 
     def __next__(self):
         while True:
-            print('Read record')
             current_length = 0
             current_length += self.recordDescriptorWordSchema['length']
             rdw = self.fd.read(self.recordDescriptorWordSchema['length'])
@@ -101,9 +100,6 @@ class FileParser:
                     module = Module(moduleCode)
                     if moduleSchema == None:
                         module.markInvalid()
-                        print(
-                            f"structureCode.content_length: {structureCode.content_length}, current_length: {current_length}"
-                        )
                         module.addField(
                             "invalid",
                             createInvalidField(
@@ -121,7 +117,4 @@ class FileParser:
                                     fieldSchema))
                             structureCode.addModule(module)
 
-            print(
-                f'structureCode: {structureCode.structureCode}, length: {structureCode.length}'
-            )
             return structureCode
