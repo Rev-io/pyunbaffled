@@ -1,5 +1,6 @@
 from ..parsers.structure_code import StructureCode
 import json
+import urllib.parse
 
 
 class KeyValueEncoder(json.JSONEncoder):
@@ -9,7 +10,8 @@ class KeyValueEncoder(json.JSONEncoder):
                 name: field['value']
                 for (name, field) in record.fields.items()
             }
-            structureCode['file_name'] = record.file_name
+            structureCode['file_name'] = urllib.parse.unquote(
+                record.file_name.rsplit('/', 1)[-1])
             structureCode['line_number'] = record.line_number
             structureCode['modules'] = []
 
