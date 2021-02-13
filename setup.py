@@ -20,7 +20,7 @@ def read(*names, **kwargs):
 
 setup(
     name='pyunbaffled',
-    version='0.2.0',
+    version='0.2.1',
     license='MIT',
     description=
     'pyunbaffled is python library for parsing telecommunications call data records in the Billing Automatic Message Accounting Format (BAF) Generic Requirements format.',
