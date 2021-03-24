@@ -20,6 +20,6 @@
       { "length": 4, "has_sign": true, "table_number": "18", "name": "connect_time" },
       { "length": 5, "has_sign": true, "table_number": "19", "name": "elapsed_time" },
       { "length": 1, "has_sign": true, "table_number": "28", "name": "wide_area_teeleecommunications_service_wats_indicator" },
-      { "length": 2, "has_sign": true, "table_number": "29", "name": "message_billing_index_mbi" },
+      { "length": 2, "has_sign": true, "table_number": "29", "name": "message_billing_index_mbi" }
     ]
   }
